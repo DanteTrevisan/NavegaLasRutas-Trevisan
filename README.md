@@ -4,5 +4,3 @@ E-Commerce dedicado a la venta de bandas sonoras de juego de la compañia NEO GE
 ## Tecnologias
 
 Sitio desarrollado con ReactJS (Javascript) y Tailwind CSS (+ SASS)
-
-Hola
