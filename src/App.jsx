@@ -3,17 +3,29 @@ import "./styles/styles.scss";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom;'
 
 
 
 function App() {
 
   return (
-    <div className='container mx-auto flex flex-col min-h-screen items-center bg-red-100'>
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    
+    <BrowserRouter>
+      <div className='container mx-auto flex flex-col min-h-screen items-center bg-red-100'>
+        <Header />
+        <Main />
+          <Routes>
+            <Route>
+              
+            </Route>
+          </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
+
+
+
   );
 };
 
