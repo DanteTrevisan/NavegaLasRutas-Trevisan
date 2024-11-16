@@ -3,7 +3,8 @@ import "./styles/styles.scss";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom;'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom;';
+import ItemListContainer from './components/ItemListContainer';
 
 
 
@@ -17,7 +18,8 @@ function App() {
         <Main />
           <Routes>
             <Route>
-              
+              path={urls.home}
+              elemento={<ItemListContainer item={"game"} />}
             </Route>
           </Routes>
         <Footer />
