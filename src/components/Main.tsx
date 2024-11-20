@@ -1,9 +1,13 @@
-import ItemListContainer from "./ItemListContainer";
+import { Children, ReactNode } from "react";
 
-const Main = () => {
+interface MainProps {
+    children: ReactNode;
+}
+
+const Main: React.FC<MainProps> = ({ children }) => {
     return(
         <main className="flex flex-col justify-center items-center flex-grow bg-sjy-100 w-4/5 mt-12">
-            <ItemListContainer greeting="Main Page"/>
+            {children}
         </main>
     );
 };
