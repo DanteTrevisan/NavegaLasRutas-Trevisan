@@ -1,13 +1,25 @@
 import React from "react";
+import {  useState } from "react";
+import { GameData } from "../utils/utils";
+import GameList from "./GameList";
+
+
 
 interface ItemListContainerProps {
-    greeting: string
+    item: string
 }
 
-const ItemListContainer: React.FC<ItemListContainerProps> = ({ greeting }) => {
+const ItemListContainer: React.FC<ItemListContainerProps> = ({ item }) => {
+    const [data] = useState<GameData[]>([])
+    
     return(
-        <p>{greeting}</p>
-    )
+        
+            <>
+                {data && item === "game" && <GameList  />}
+                {data && item === "album" && <GameList />}
+            </>
+        )
+    
 };
 
 export default ItemListContainer

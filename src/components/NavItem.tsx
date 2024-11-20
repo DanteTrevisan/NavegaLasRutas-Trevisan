@@ -7,7 +7,7 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ href, text }) => {
     return(
-        <a href=""
+        <a
             className="rounded p-1 px-3 font-semibold hover:bg-amber-300 text-sky-50 transition duration-500"
             href={href}
         >

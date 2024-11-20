@@ -1,12 +1,21 @@
+import { routes } from "../utils/routes";
 import NavItem from "./NavItem";
+routes
 
 const NavBar = () => {
     return(
         <nav className="col-span-7 flex justify-start items-center px-3 font-bold">
             <ul className="flex space-x-2">
-                <NavItem href="#" text="Inicio"  />
-                <NavItem href="#" text="Juegos"  />
-                <NavItem href="#" text="Bandas Sonoras"  />
+                {routes.map((route, index) => {
+                    const routeKey = Object.keys(route)[0];
+                    return(
+                        <NavItem
+                            key={index}
+                            href={route[routeKey].url}
+                            text={route[routeKey].text}
+                        />
+                    )
+                })}
             </ul>
         </nav>
     )
