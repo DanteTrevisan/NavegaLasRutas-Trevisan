@@ -1,25 +1,38 @@
-import { toUrlFormat } from "../utils/utils";
+import { toUrlFormat, GameData, albumsImagesPath, imagesExtension } from "../utils/utils";
 import Item from "./Item";
 import { urls } from "../utils/routes";
 
 interface ItemListProps {
-  data: string[];
+  data: GameData[];
 }
 
 const ItemList: React.FC<ItemListProps> = ({ data }) => {
   return (
     <>
       <section>
-        {data.map(() =>
-          (
-            <Item
-              url={
-                urls.item +
-                toUrlFormat("The King Of Fighters '94")
-              }
-            />
-         )
+        <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {data.map((game) =>
+            game.albums.map((album) => (
+              <Item
+                key={game.id + game.name + album.id + album.name}
+                name={album.name}
+                image={albumsImagesPath + album.image + imagesExtension}
+                url={
+                  urls.item +
+                  "/" +
+                  game.id +
+                  "-" +
+                  toUrlFormat(game.name) + 
+                  "-" +
+                  toUrlFormat(album.name)
+                }
+              
+              />
+              ))
+                
         )}
+
+        </section>
       </section>
     </>
   );

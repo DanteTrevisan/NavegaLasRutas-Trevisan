@@ -8,8 +8,8 @@ interface SongListProps {
 const SongList: React.FC<SongListProps> = ({ songs }) => {
   return (
     <ul>
-      {songs.map(() => (
-        <SongDetail  />
+      {songs.map((song) => (
+        <SongDetail  key={song.id} song={song}/>
       ))}
     </ul>
   );

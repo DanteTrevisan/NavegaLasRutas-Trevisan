@@ -1,69 +1,61 @@
-export const dataPath = "/src/data/";
+export const dataPath = "/src/data/data.json";
 
-export const gameImagesPath = "/images/games/";
-export const albumsImagesPath = "/images/albums";
+export const gamesImagesPath = "/images/games/";
+export const albumsImagesPath = "/images/albums/";
 export const imagesExtension = ".webp";
 
 export const albumsCollection = "albums";
 export const ordersCollection = "orders";
 
 interface StageData {
-    name: string;
+  name: string;
 }
 
 export interface SongData {
-    id: number;
-    name: string;
-    duration: string;
-    notes: string;
-    stages: StageData;
-}
-
-export interface DiscData {
-    id: number;
-    songs: SongData[];
+  id: number;
+  name: string;
+  duration: string;
+  notes: string;
+  stages: StageData[];
 }
 
 export interface AlbumData {
-    id: number;
-    name: string;
-    image: string;
-    price: number;
-    stock: number;
-    descripcion: string;
-    discs: DiscData[];
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+  stock: number;
+  description: string;
+  songs: SongData[];
 }
 
 export interface GameData {
-    id: number;
-    name: string;
-    image: string;
-    description: string;
-    story: string;
-    albums: AlbumData[]
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  albums: AlbumData[];
 }
 
 export interface ItemData {
-    id: number;
-    name: string;
-    image: string;
-    price: number;
-    stock: number;
-    description: string;
-    story: string;
-    discs: DiscData[];
-    quantity: number;
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+  stock: number;
+  description: string;
+  songs: SongData[];
+  quantity: number;
 }
 
 /**
- * @param {string} input - string. PUede contener caracteres especiales 
- * @returns {string} - string en formato URL
- */ 
-
-export function toUrlFormat(input: string) : string {
-    const OnlyAlphanumericCharacters = input
-        .replace(/[^a-zA-Z0-9\s]/g, "")
-        .toLowerCase();
-    const urlFormat = OnlyAlphanumericCharacters.replace(/\s+/g,"-");
-    return urlFormat;
+ * @param {string} input - Input string. Can contain special characters.
+ * @returns {string} - URL format string. No special characters. Words join with "-".
+ */
+export function toUrlFormat(input: string): string {
+  const OnlyAlphanumericCharacters = input
+    .replace(/[^a-zA-Z0-9\s]/g, "")
+    .toLowerCase();
+  const urlFormat = OnlyAlphanumericCharacters.replace(/\s+/g, "-");
+  return urlFormat;
 }
