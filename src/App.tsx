@@ -6,6 +6,7 @@ import Main from "./components/Main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemListContainer from "./components/ItemListContainer";
 import { urls } from "./utils/routes";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
   return (
@@ -23,7 +24,21 @@ function App() {
               path={urls.category}
               element={<ItemListContainer item={"album"} />}
             />
+
+            <Route
+              path={urls.category + "/:gameId"}
+              element={<ItemListContainer item={"album"}/>}
+            />
+
+            <Route
+              path={urls.item + "/:albumId"}
+              element={<ItemDetailContainer />}
+            />
           </Routes>
+
+          
+          
+
         </Main>
         <Footer />
       </div>
