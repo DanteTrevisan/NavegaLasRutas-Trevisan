@@ -1,18 +1,29 @@
 import { urls } from "../utils/routes";
 import GameItem from "./GameItem";
-import { toUrlFormat } from "../utils/utils";
+import { GameData, toUrlFormat, gamesImagesPath, imagesExtension } from "../utils/utils";
+import React from "react";
 
-urls
+interface GameListProps {
+    data: GameData[];
+}
 
-const GameList = ( ) => {
+const GameList: React.FC<GameListProps> = ( { data } ) => {
     return(
         <>
             <p className="p-8">
                 ¡Compra las bandas sonoras originales de los juegos clasicos y mas actuales de The King Of Fighters!
             </p>
 
-            <section className="flex flex-row justify-around w-full">
-                <GameItem url={urls.category + toUrlFormat("The King Of Fighters '94")}/>
+            <section className="w-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {data.map((game) => (
+                    <GameItem
+                        key={game.id}
+                        name={game.name}
+                        image={gamesImagesPath + game.image + imagesExtension}
+                        url={urls.category + "/" + toUrlFormat(game.name)}
+                        description={game.description}
+                    />
+                ))}
             </section>
         </>
     );
