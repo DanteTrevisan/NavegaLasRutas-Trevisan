@@ -17,7 +17,7 @@ const ItemDetailContainer = () =>{
     let albumName = "";
 
     if (gameUrl) {
-        const url = gameUrl.split("-");
+        const url = gameUrl.split("_");
         gameId = url[0];
         albumName = url[2];
     }

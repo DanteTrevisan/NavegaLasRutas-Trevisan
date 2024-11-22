@@ -21,9 +21,9 @@ const ItemList: React.FC<ItemListProps> = ({ data }) => {
                   urls.item +
                   "/" +
                   game.id +
-                  "-" +
+                  "_" +
                   toUrlFormat(game.name) + 
-                  "-" +
+                  "_" +
                   toUrlFormat(album.name)
                 }
               

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface NavItemProps {
     href: string;
@@ -7,13 +8,15 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ href, text }) => {
     return(
-        <a
-            className="rounded p-1 px-3 font-semibold hover:bg-amber-300 text-sky-50 transition duration-500"
-            href={href}
+        <Link
+            className="rounded p-1 px-3 font-semibold hover:bg-amber-700 text-sky-50 transition duration-500"
+            to={href}
         >
             {text}
-        </a>
+        </Link>
+
     )
+
 };
 
 export default NavItem;
