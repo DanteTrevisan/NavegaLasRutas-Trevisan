@@ -1,5 +1,12 @@
 import SongList from "./SongList";
-import { albumsImagesPath, imagesExtension, AlbumData } from "../utils/utils";
+import { albumsImagesPath, imagesExtension, AlbumData, ItemData } from "../utils/utils";
+import { useState, useContext } from "react";
+import ItemQuantitySelector from "./ItemQuantitySelector";
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
+import { urls } from "../utils/routes";
+
 
 
 interface ItemDetailProps{
@@ -7,6 +14,23 @@ interface ItemDetailProps{
 }
 
 const ItemDetail : React.FC<ItemDetailProps> = ({ item }) => {
+    const [cantidad, setCantidad] = useState(1);
+    const navigate = useNavigate();
+
+    const { addItemToCart, isInCart} = useContext(CartContext)
+
+    const handleAddToCart = () => {
+        const itemToCart: ItemData = {
+            ...item,
+            quantity: cantidad
+        };
+
+        addItemToCart(itemToCart)
+    }
+
+    const handleGoback = () => {
+        navigate(-1)
+    }
     return(
         <article className="flex flex-col items-center p-4">
             <div className="flex flex-row justify-around item-center">
@@ -25,6 +49,37 @@ const ItemDetail : React.FC<ItemDetailProps> = ({ item }) => {
                     <p className="p-4 font-extrabold">{item.price}</p>
                 </div>
             </div>
+
+            {!isInCart(item.id) ? (
+                <div>
+                    <ItemQuantitySelector
+                        cantidad={cantidad}
+                        setCantidad={setCantidad}
+                        stock={item.stock}
+                    />
+
+                    <button
+                       className="bg-amber-900 text-amber-50 font-semibold px-2 py-1 rounded-md my-3" 
+                       onClick={handleAddToCart}
+                    >
+                        Agregar al carrito
+                    </button>
+                </div>
+            ) : (
+                <Link
+                    className="bg-amber-900 text-amber-50 font-semibold px-2 py-1 rounded-md my-3"
+                    to={urls.cart}
+                >
+                    Ir al carro
+                </Link>
+            )}
+
+            <button
+                onClick={handleGoback}
+                className="bg-amber-900 text-amber-50 font-semibold px-2 py-1 rounded-md"
+            >
+                Volver
+            </button>
 
             <p className="p-4">Lista de canciones</p>
 
