@@ -7,42 +7,46 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemListContainer from "./components/ItemListContainer";
 import { urls } from "./utils/routes";
 import ItemDetailContainer from "./components/ItemDetailContainer";
+import { CartProvider } from "./context/CartContext";
+import Cart from "./components/Cart";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="container mx-auto flex flex-col min-h-screen items-center bg-red-100">
-        <Header />
-        <Main>
-          <Routes>
-            <Route
-              path={urls.home}
-              element={<ItemListContainer item={"game"}/>}
-            />
+    <CartProvider>
+      <BrowserRouter>
+        <div className="container mx-auto flex flex-col min-h-screen items-center bg-red-100">
+          <Header />
+          <Main>
+            <Routes>
+              <Route
+                path={urls.home}
+                element={<ItemListContainer item={"game"} />}
+              />
 
-            <Route 
-              path={urls.category}
-              element={<ItemListContainer item={"album"} />}
-            />
+              <Route
+                path={urls.category}
+                element={<ItemListContainer item={"album"} />}
+              />
 
-            <Route
-              path={urls.category + "/:gameId"}
-              element={<ItemListContainer item={"album"}/>}
-            />
+              <Route
+                path={urls.category + "/:gameId"}
+                element={<ItemListContainer item={"album"} />}
+              />
 
-            <Route
-              path={urls.item + "/:albumId"}
-              element={<ItemDetailContainer />}
-            />
-          </Routes>
+              <Route
+                path={urls.item + "/:albumId"}
+                element={<ItemDetailContainer />}
+              />
 
-          
-          
-
-        </Main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+              <Route
+                path={urls.cart} element={<Cart />}
+              />
+            </Routes>
+          </Main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

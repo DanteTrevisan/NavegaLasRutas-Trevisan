@@ -1,4 +1,4 @@
-import { Children, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 interface MainProps {
     children: ReactNode;
