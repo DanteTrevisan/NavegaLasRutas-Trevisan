@@ -46,12 +46,13 @@ const ItemDetail : React.FC<ItemDetailProps> = ({ item }) => {
 
                 <div className="flex flex-col justify-between w-1/2">
                     <p className="font-light p-4">{item.description}</p>
-                    <p className="p-4 font-extrabold">{item.price}</p>
+                    <p className="p-4 font-extrabold">Precio: ${item.price}</p>
                 </div>
             </div>
 
             {!isInCart(item.id) ? (
-                <div>
+                <div className="flex gap-4 mb-4"> 
+                    <p>Selecciones la cantidad de copias que desea llevar:</p>
                     <ItemQuantitySelector
                         cantidad={cantidad}
                         setCantidad={setCantidad}
