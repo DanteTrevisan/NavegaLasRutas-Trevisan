@@ -46,7 +46,7 @@ const ItemDetail : React.FC<ItemDetailProps> = ({ item }) => {
 
                 <div className="flex flex-col justify-between w-1/2">
                     <p className="font-light p-4">{item.description}</p>
-                    <p className="p-4 font-extrabold">{item.price}</p>
+                    <p className="p-4 font-extrabold">Precio: ${item.price}</p>
                 </div>
             </div>
 
