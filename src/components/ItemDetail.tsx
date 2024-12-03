@@ -51,8 +51,9 @@ const ItemDetail : React.FC<ItemDetailProps> = ({ item }) => {
             </div>
 
             {!isInCart(item.id) ? (
-                <div className="flex gap-4 mb-4"> 
+                <div className="flex gap-4 mb-4">
                     <p>Selecciones la cantidad de copias que desea llevar:</p>
+
                     <ItemQuantitySelector
                         cantidad={cantidad}
                         setCantidad={setCantidad}
