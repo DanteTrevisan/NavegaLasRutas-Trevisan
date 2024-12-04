@@ -3,12 +3,13 @@ import "./styles/styles.scss";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ItemListContainer from "./components/ItemListContainer";
 import { urls } from "./utils/routes";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { CartProvider } from "./context/CartContext";
 import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -41,6 +42,15 @@ function App() {
               <Route
                 path={urls.cart} element={<Cart />}
               />
+
+              <Route
+                path={urls.checkout} element={<Checkout />}
+              />
+
+              <Route
+                path="*" element={<Navigate to={urls.home} />}
+              />
+
             </Routes>
           </Main>
           <Footer />
